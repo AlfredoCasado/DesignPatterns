@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.*;
 
-class SitemapProcessTest {
+class ProcessTest {
 
     final User admin = new User(true);
     final User notAdmin = new User(false);
@@ -13,7 +13,7 @@ class SitemapProcessTest {
 
     @Test public void
     only_admin_users_can_execute_process() {
-        SitemapProcess process = createProcess(admin, monitor);
+        Process process = createProcess(admin, monitor);
         process.execute();
 
         verify(monitor).beginAt(any());
@@ -21,7 +21,7 @@ class SitemapProcessTest {
 
     @Test public void
     no_admin_users_cannot_execute_process() {
-        SitemapProcess process = createProcess(notAdmin, monitor);
+        Process process = createProcess(notAdmin, monitor);
         process.execute();
 
         verify(monitor, never()).beginAt(any());
@@ -29,14 +29,14 @@ class SitemapProcessTest {
 
     @Test public void
     process_is_monitored() {
-        SitemapProcess process = createProcess(admin, monitor);
+        Process process = createProcess(admin, monitor);
         process.execute();
 
         verify(monitor).beginAt(any());
         verify(monitor).finishSuccessfullyAt(any());
     }
 
-    private SitemapProcess createProcess(User admin, ProcessMonitor monitor) {
+    private Process createProcess(User admin, ProcessMonitor monitor) {
         return new SitemapProcess(admin, monitor);
     }
 }

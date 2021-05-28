@@ -2,7 +2,7 @@ package com.codesai.patterns.decorator;
 
 import java.util.Date;
 
-public class SitemapProcess {
+public class SitemapProcess implements Process {
 
     private final User user;
     private final ProcessMonitor monitor;
@@ -12,6 +12,7 @@ public class SitemapProcess {
         this.monitor = monitor;
     }
 
+    @Override
     public void execute() {
         if (user.isAdmin) {
             monitor.beginAt(new Date());
