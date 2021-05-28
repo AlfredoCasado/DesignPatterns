@@ -3,12 +3,12 @@ package com.codesai.patterns.decorator;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class SitemapProcessTest {
 
     final User admin = new User(true);
+    final User notAdmin = new User(false);
     final ProcessMonitor monitor = mock(ProcessMonitor.class);
 
     @Test public void
@@ -17,6 +17,14 @@ class SitemapProcessTest {
         process.execute();
 
         verify(monitor).beginAt(any());
+    }
+
+    @Test public void
+    no_admin_users_cannot_execute_process() {
+        SitemapProcess process = createProcess(notAdmin, monitor);
+        process.execute();
+
+        verify(monitor, never()).beginAt(any());
     }
 
     @Test public void
