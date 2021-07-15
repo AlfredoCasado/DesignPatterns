@@ -34,4 +34,19 @@ What is the best design we can do to fulfill this need?.
 
 Note: the class CityTemperature is and old and complex system that we don't want to touch in 
 any way.
+
+## Facade
+
+In this example we use a facade to simplify and adapt to our needs the use of the java
+image library. This library can be viewed as a complex subsystem of classes and the only
+need we have in our application regarding images was to create a thumbnail from a file
+containing an image.
+
+exercise: We need to create more images for different purpouses inside our application:
+
+    - 200x200 images for mobile
+    - 300x300 images for desktop
+    - 400x400 for images sended in emails
+
+Think in what is the best interface to achieve this functionality
         
