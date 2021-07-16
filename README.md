@@ -49,4 +49,13 @@ exercise: We need to create more images for different purpouses inside our appli
     - 400x400 for images sended in emails
 
 Think in what is the best interface to achieve this functionality
+
+## Flyweight
+
+This pattern is used to optimize the memory utilization reusing existing objects that
+are equals and inmutable.
+
+java wrappers objects like String, Integer or Float are implemented this way. 
+
+exercise: make the class point, that is a value object, a flyweight
         
